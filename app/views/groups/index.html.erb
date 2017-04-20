@@ -1,0 +1,27 @@
+<div class="container">
+<h1>Groups Index</h1>
+ 
+<%= link_to 'New Group', new_group_path %>
+<p>
+<table class="table table-striped">
+  <tr>
+    <th>Group Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+ 
+  <% @groups.each do |group| %>
+    <tr>
+      <td><%= group.name %></td>
+      <td><%= link_to 'Show', group_path(group) %></td>
+      <td><%= link_to 'Edit', edit_group_path(group) %></td>
+      <td><%= link_to 'Destroy', group_path(group),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+</div>
