@@ -5,14 +5,17 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @groups = @event.groups
   end
 
   def new
     @event = Event.new
+    @groups = Group.all
   end
 
   def edit
     @event = Event.find(params[:id])
+    @groups = Group.all
   end
 
   def create
@@ -44,7 +47,7 @@ class EventsController < ApplicationController
 
   private
     def event_params
-    	params.require(:event).permit(:name, :date, :description)
+    	params.require(:event).permit(:name, :date, :description, group_ids: [])
     end
 
 
