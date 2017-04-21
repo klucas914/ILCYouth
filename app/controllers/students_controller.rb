@@ -39,6 +39,17 @@ class StudentsController < ApplicationController
       render 'edit'
     end
   end
+  
+  def check_in
+    event = Event.find(params[:id])
+    student = Student.find(params[:id])
+    @check_in = CheckIn.new(event: event, student: student)
+    if @check_in.save
+      flash[:alert] = "#{student.first_name} is here!"
+    else
+      flash[:alert] = "There was an error checking in. Please try again."
+    end  
+  end
 
   def destroy
     @student = Student.find(params[:id])
