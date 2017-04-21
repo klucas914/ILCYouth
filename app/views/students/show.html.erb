@@ -10,6 +10,13 @@
   <%= @student.surname %>
 </p>
 
+<p>
+  <strong>Groups:</strong>
+    <% @student.groups.each do |group| %>
+      <p><%= group.name %></p>
+    <% end %>
+ </p>
+
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %>
 

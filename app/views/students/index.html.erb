@@ -7,6 +7,7 @@
   <tr>
     <th>First Name</th>
     <th>Surname</th>
+    <th>Groups</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,6 +17,7 @@
     <tr>
       <td><%= student.first_name %></td>
       <td><%= student.surname %></td>
+      <td><%= student.groups.pluck(:name).join(", ") %></td>
       <td><%= link_to 'Show', student_path(student) %></td>
       <td><%= link_to 'Edit', edit_student_path(student) %></td>
       <td><%= link_to 'Destroy', student_path(student),

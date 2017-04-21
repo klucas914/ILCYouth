@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170420113656) do
+ActiveRecord::Schema.define(version: 20170420141700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,8 +18,9 @@ ActiveRecord::Schema.define(version: 20170420113656) do
   create_table "events", force: :cascade do |t|
     t.string   "name"
     t.string   "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -28,11 +29,19 @@ ActiveRecord::Schema.define(version: 20170420113656) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "groups_students", id: false, force: :cascade do |t|
+    t.integer "group_id",   null: false
+    t.integer "student_id", null: false
+  end
+
   create_table "students", force: :cascade do |t|
     t.string   "first_name"
     t.string   "surname"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "group_id"
+    t.index ["group_id"], name: "index_students_on_group_id", using: :btree
   end
 
+  add_foreign_key "students", "groups"
 end

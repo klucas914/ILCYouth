@@ -1,9 +1,36 @@
 <div class="container">
-<h1>View Group</h1>
+<h1><%= @group.name %></h1>
+
 <p>
-  <strong>Group Name:</strong>
-  <%= @group.name %>
-</p>
+<table class= "table table-striped">
+  <tbody>
+     <thead>
+      <th>Group Members</th>
+      <th></th>
+    </thead>
+    <% if @group.students.empty? %>
+      <tr>
+        <td> There aren't any members of this group. Add one now...</td>
+        <td></td>
+        <td></td>
+      <% end %>
+      </tr>
+
+    <% else @group.students.each do |student| %>
+       <tr>
+         <td><%= student.first_name %> <%= student.surname %></td>
+         <td><%= link_to 'Edit', edit_student_path(student) %></td>
+         <!--<td><%#= link_to 'Remove', {method: 'delete_student'}, class: 'btn btn-danger' %></td>-->
+        </tr>
+    <% end %> 
+     
+     
+  </tbody>
+</table>
+
+
+
+
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
 </div>

@@ -5,6 +5,12 @@ class GroupsController < ApplicationController
   
   def show
     @group = Group.find(params[:id])
+    @students = Student.all
+  end
+
+  def add_student
+    @group = Group.find(params[:id])
+    @students = Student.all
   end
 
   def new
@@ -34,7 +40,10 @@ class GroupsController < ApplicationController
       render 'edit'
     end
   end
-
+  
+  def delete_student
+  end
+  
   def destroy
     @group = Group.find(params[:id])
     @group.destroy

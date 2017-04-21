@@ -26,6 +26,11 @@
     <%= f.label :surname %><br>
     <%= f.text_field :surname %>
   </p>
+
+  <p>
+    <%= f.label :groups %><br>
+    <%= f.select :group_ids, options_for_select(@groups.collect{ |a| [a.name, a.id]}), {}, multiple: true, class: "chosen-select" %>
+  <p>
  
   <p>
     <%= f.submit %>

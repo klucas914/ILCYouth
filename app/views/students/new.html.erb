@@ -24,7 +24,12 @@
     <%= f.label :surname %><br>
     <%= f.text_field :surname %>
   </p>
- 
+
+  <p>
+    <%= f.label :groups %><br>
+    <%= f.select :group_ids, options_for_select(@groups.collect{ |a| [a.name, a.id]}), {}, multiple: true, class: "chosen-select" %>
+    <%#= select_tag :groups, options_from_collection_for_select(Group.all, 'id', 'name', @student.groups.map{ |j| j.id, j.name}), :multiple => true %> 
+ <%#= f.select :location_type_id, options_for_select(@location_types.collect{ |a| [a.name, a.id]}) %>
   <p>
     <%= f.submit %>
   </p>

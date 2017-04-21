@@ -1,14 +1,24 @@
 <div class="container">
-<h1>Event</h1>
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
+<h1><%= @event.name %></h1>
+
  
 <p>
   <strong>Date:</strong>
   <%= @event.date %>
 </p>
+
+<p>
+    <strong>Description:</strong>
+    <%= @event.description %>
+</p>
+
+<p>
+  <strong>Groups Present:</strong>
+  <%#= @event.groups %>
+</p>
+
+<h2>Student Check In:</h2>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
 </div>
